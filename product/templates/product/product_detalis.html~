@@ -1,0 +1,22 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="post">
+
+  <div class="top-menu">
+
+  <span class="glyphicon glyphicon-pencil"></span></a>
+
+   <br>
+  <img src="{{ product.photo.url }}" height="200" width="250" border="1" />
+  <br>
+  <h1>
+    Name :-<a href="{% url 'product_detail' pk=product.pk %}"> {{ product.pname }}</a>
+    {{ product.pk }}
+   <br>
+   Description :- {{product.description}}
+
+   <br>
+ </h1>
+
+  {% endblock %}

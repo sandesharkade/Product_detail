@@ -1,0 +1,22 @@
+{% extends 'product/base.html' %}
+{% block content %}
+<div class="page-header">
+    <a href="{% url 'product_save' %}" class="top-menu">Add Product</a>
+    <h1><a href="/">Product Update</a></h1>
+
+  </div>
+	{% for p in product %}
+	<form action="/" method="POST">{% csrf_token %}
+	  <br>
+	  <img src="{{ p.photo.url }}" height="200" width="250" border="1" />
+	  <br>
+	  <h1>
+	    Name :-<a href={% url 'product_detail' pk=p.pk %}> {{ p.pname }}</a>
+	    {{p.pk}}
+	    <br>
+	    Description :- {{p.description}}
+
+	    <br>
+	  </h1>
+	{% endfor %}
+{% endblock %}

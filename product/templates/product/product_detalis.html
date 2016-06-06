@@ -1,0 +1,21 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="post">
+
+  <div class="top-menu">
+
+  <a class="btn btn-default" href="{% url 'product_edit' pk=product.pk %}" ><span class="glyphicon glyphicon-pencil" ></span></a>
+
+   <br>
+  <img src="{{ product.photo.url }}" height="200" width="250" border="1" />
+  <br>
+  <h1>
+    Name :- {{ product.pname }}
+   <br>
+   Description :- {{product.description}}
+
+   <br>
+ </h1>
+
+  {% endblock %}
