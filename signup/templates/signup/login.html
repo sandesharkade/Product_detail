@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+
+
+
+
+  </head>
+
+  <body>
+
+
+
+
+
+
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+	<div class="navbar-header">
+
+	  <center><a class="navbar-brand" href="">Login</a><center>
+	</div>
+
+      </div>
+    </nav>
+
+
+
+    <div  class="well">
+      <center>
+
+	<h1 style=" margin-top: 2cm">Login</h1>
+
+	<form id="login_form" method="post" action="" >{% csrf_token %}
+	  <table cellpadding="4" cellspacing="10">
+	    <tr>
+	      <td>Username</td>
+	      <td><input type="text" class="form-control"  name="username" value="" /></td>
+	    </tr>
+	    <tr>
+	      <td>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	      </td>
+	    </tr>
+
+
+	    <tr>
+	      <td>Password</td>
+	      <td><input type="password" class="form-control" name="password" value=""  /></td>
+	    </tr><br>
+
+	    <tr>
+	      <td>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	      </td>
+	    </tr>
+
+
+
+	    <tr>
+	      <td><input type="submit" class="btn btn-success" value="Login" /></td>
+	      <td><a href="{% url 'signup' %}"><input type="button" class="btn btn-primary" value="Signup" /></a></td>
+	    </tr>
+	  </table>
+
+	</form>
+	<strong color="red">{{msg}}</strong>
+      </center>
+    </div>
+ </body>
+  </html>

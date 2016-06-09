@@ -1,10 +1,26 @@
 from django.conf.urls import url,include
 from . import views
 from django.contrib import admin
+from .views import Product_detail,Product_list,Product_edit,Product_save
+from django.contrib.auth.decorators import login_required
+
+app_name='product'
 
 urlpatterns=[
+    url(r'^$',login_required(Product_list.as_view()),name='product_list'),
+    url(r'^(?P<pk>\d+)/$',login_required(Product_detail.as_view()),name='product_detail'),
+    url(r'^new/$',login_required(Product_save.as_view()),name='product_save'),
+    url(r'^(?P<pk>\d+)/edit/$',login_required(Product_edit.as_view()),name='product_edit'),
+]
 
-    url(r'^$',views.product_edit,name='product_edit'),
-    url(r'^product/new/$',views.product_save,name='product_save'),
-    url(r'^product/(?P<pk>\d+)/$', views.product_detail, name='product_detail'),
-    ]
+
+
+
+
+    # url(r'^$',Product_home.as_view(template_name="product/product_list.html")),
+#    # url(r'^product/new/$',Product_save.as_view(template_name="product/product_save.html"),name="product_save"),
+#     url(r'^product/(?P<pk>\d+)/$', Product_edit.as_view(),name="product_detail"),
+#    # url(r'^product/(?P<pk>\d+)/edit/$',Product_editF.as_view(template_name="product/product_edit.html"),name="product_edit")
+#     ]
+# #<a href="{% url 'product_save' %}" class="top-menu">Add Product</a>
+# #  <a class="btn btn-default" href="{% url 'product_edit' pk=product.pk %}" ><span class="glyphicon glyphicon-pencil" ></span></a>

@@ -1,8 +1,26 @@
 {% extends 'product/base.html' %}
-{% block content %}
-<h1>Product Details</h1>
-<form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit" class="save btn btn-default">Save</button>
-</form>
-{% endblock %}
+{% block body %}
+<div class="container-fluid">
+
+      <div class="panel panel-default">
+
+	<div class="panel-body">
+	  <h2 style="align:left;margin-left:12%"><b>Product Change</b></h2><br><br>
+	  {% if error_message %}
+	  <p><strong>{{ error_message }}</strong></p>
+	  {% endif %}
+	  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+	    {% csrf_token %}
+	    {% include 'product/form_template.html' %}
+	    <div class="form-group">
+	      <div class="col-sm-offset-2 col-sm-10">
+		<button type="submit" class="btn btn-success">Submit</button>
+	      </div>
+	    </div>
+	  </form>
+	</div>
+
+      </div>
+    </div>
+
+{% endblock  %}

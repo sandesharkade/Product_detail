@@ -1,40 +1,40 @@
-from django.shortcuts import render,get_object_or_404
-from django.utils import timezone
 from .models import Products
-from django.shortcuts import redirect
-from .forms import ProductForm
 from django.contrib.auth.models import User
-# Create your views here.
+from django.views.generic import ListView,DetailView,UpdateView,CreateView, View
+from django.core.urlresolvers import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.contrib.auth import logout
+from mysite import settings
 
-def product_list(request):
-    product=Products.objects.all()
-    return render(request,'product/product_list.html',{'product':product})
+class Product_list(ListView):
+    template_name="product/product_list.html"
+    context_object_name="product"
+    def get_queryset(self):
+        return Products.objects.filter(user = self.request.user)
 
+class Product_detail(DetailView):
+    model=Products
+    template_name="product/product_detalis.html"
+    context_object_name="product"
 
-def product_save(request):
-    if request.method == "POST":
-        form = ProductForm(request.POST,request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('product_list')
-    else:
-        form = ProductForm()
-    return render(request, 'product/product_save.html', {'form': form})
+class Product_edit(UpdateView):
+    template_name="product/product_edit.html"
+    model=Products
+    fields=['pname','photo','description']
+    success_url=reverse_lazy("product:product_list")
 
+class Product_save(CreateView):
+    model = Products
+    template_name="product/product_save.html"
+    fields=['pname','photo','description']
+    success_url=reverse_lazy("product:product_list")
+    def form_valid(self, form):
+        user = self.request.user
+        print(self.request.user)
+        form.instance.user = user
+        return super(Product_save, self).form_valid(form)
 
-def product_detail(request, pk):
-    product=Products.objects.get(pk=pk)
-    return render(request,'product/product_detalis.html',{'product':product})
-
-
-def product_edit(request,pk):
-    product=get_object_or_404(Products,pk=pk)
-    if request.method=='POST':
-        form=ProductForm(request.POST,request.FILES,instance=product)
-        if form.is_valid():
-            product=form.save(commit=False)
-            product.save()
-            return redirect('product_detail',pk=product.pk)
-    else:
-        form=ProductForm(instance=product)
-    return render(request,'product/product_edit.html',{'form':form})
+class Logout(View):
+    def get(self,request):
+        logout(request)
+        return HttpResponseRedirect(settings.LOGIN_URL)

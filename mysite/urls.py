@@ -21,5 +21,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include('product.urls')),
+    url(r'^', include('signup.urls')),
+    url(r'product/', include('product.urls')),
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

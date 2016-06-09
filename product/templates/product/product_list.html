@@ -1,22 +1,28 @@
 {% extends 'product/base.html' %}
-{% block content %}
-<div class="page-header">
-    <a href="{% url 'product_save' %}" class="top-menu">Add Product</a>
-    <h1><a href="/">Product Update</a></h1>
 
+{% block body %}
+<div class="albums-container container-fluid">
+  <div class="row">
+  {% if product %}
+     {% for products in product %}
+    <div class="col-sm-4 col-lg-2">
+      <div class="thumbnail" >
+	<a href="{% url 'product:product_detail' products.id %}">
+	  <img src="{{ products.photo.url }}" style="width:300px;height:300px" >
+	</a>
+	<div class="caption">
+	  <h2>{{ products.pname }}</h2>
+
+
+	  <!-- View Details -->
+	  <a href="{% url 'product:product_detail' products.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+	</div>
+      </div>
+    </div>
+    {% endfor  %}
+{% else %}
+  <h3>You Don't have any Product</h3>
+  {% endif %}
   </div>
-	{% for p in product %}
-	<form action="/" method="POST">{% csrf_token %}
-	  <br>
-	  <img src="{{ p.photo.url }}" height="200" width="250" border="1" />
-	  <br>
-	  <h1>
-	    Name :-<a href={% url 'product_detail' pk=p.pk %}> {{ p.pname }}</a>
-	    {{p.pk}}
-	    <br>
-	    Description :- {{p.description}}
-
-	    <br>
-	  </h1>
-	{% endfor %}
-{% endblock %}
+  </div>
+{% endblock  %}
