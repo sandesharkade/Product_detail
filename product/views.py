@@ -1,40 +1,64 @@
 from .models import Products
 from django.contrib.auth.models import User
-from django.views.generic import ListView,DetailView,UpdateView,CreateView, View
+from django.views.generic import (ListView, DetailView,
+                                  UpdateView, CreateView, View)
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from mysite import settings
 
+
 class Product_list(ListView):
-    template_name="product/product_list.html"
-    context_object_name="product"
+
+    '''
+    Display the product list
+    '''
+    template_name = "product/product_list.html"
+    context_object_name = "product"
+
     def get_queryset(self):
-        return Products.objects.filter(user = self.request.user)
+        return Products.objects.filter(user=self.request.user)
+
 
 class Product_detail(DetailView):
-    model=Products
-    template_name="product/product_detalis.html"
-    context_object_name="product"
+
+    '''
+    Display the product detail
+    '''
+    model = Products
+    template_name = "product/product_detalis.html"
+    context_object_name = "product"
+
 
 class Product_edit(UpdateView):
-    template_name="product/product_edit.html"
-    model=Products
-    fields=['pname','photo','description']
-    success_url=reverse_lazy("product:product_list")
+
+    '''
+    Display the product edit
+    '''
+    template_name = "product/product_edit.html"
+    model = Products
+    fields = ['pname', 'photo', 'description']
+    success_url = reverse_lazy("product:product_list")
+
 
 class Product_save(CreateView):
+
+    '''
+     product save
+    '''
     model = Products
-    template_name="product/product_save.html"
-    fields=['pname','photo','description']
-    success_url=reverse_lazy("product:product_list")
+    template_name = "product/product_save.html"
+    fields = ['pname', 'photo', 'description']
+    success_url = reverse_lazy("product:product_list")
+
     def form_valid(self, form):
         user = self.request.user
-        print(self.request.user)
         form.instance.user = user
         return super(Product_save, self).form_valid(form)
 
+
 class Logout(View):
-    def get(self,request):
+
+    def get(self, request):
         logout(request)
         return HttpResponseRedirect(settings.LOGIN_URL)
