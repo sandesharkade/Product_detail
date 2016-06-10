@@ -1,7 +1,7 @@
 from .models import Products
 from django.contrib.auth.models import User
 from django.views.generic import (ListView, DetailView,
-                                  UpdateView, CreateView, View)
+                                  UpdateView,DeleteView,CreateView,View)
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
@@ -39,6 +39,16 @@ class Product_edit(UpdateView):
     model = Products
     fields = ['pname', 'photo', 'description']
     success_url = reverse_lazy("product:product_list")
+
+
+class Product_delete(DeleteView):
+
+    '''
+     product delete
+    '''
+
+    model=Products
+    success_url=reverse_lazy("product:product_list")
 
 
 class Product_save(CreateView):

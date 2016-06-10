@@ -16,6 +16,15 @@
 
 	  <!-- View Details -->
 	  <a href="{% url 'product:product_detail' products.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+	  <!-- Delete Album -->
+	  <form action="{% url 'product:product_delete' products.id %}" method="post" style="display: inline;">
+	    {% csrf_token %}
+	    <input type="hidden" name="album_id" value="{{ products.id }}" />
+	    <button type="submit" class="btn btn-default btn-sm">
+	      <span class="glyphicon glyphicon-trash"></span>
+	    </button>
+	  </form>
 	</div>
       </div>
     </div>
