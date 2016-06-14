@@ -1,68 +1,73 @@
 <html>
   <head>
+
+
     <title>Signup</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
+     
 
   </head>
 
-  <body>
+  <body style="background-color:#E0FFFF;">
+    
+    
+    <form style="align:center;" id ="reg_form" method="POST" action="">
+      {% csrf_token %}
 
-	  <nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-			    <div class="navbar-header">
+      <table cellspacing = "5" cellpadding = "5">
+	  <tr>
+	    <td>Username:</td>
+	    <td><input type="text" name="username" value="" class="form-control"></td>
+	    <td style="color:red;">{{user_form.username.errors}}</td>
+	  </tr>
 
-				<center><a class="navbar-brand" href="">User-Registration</a><center>
-			    </div>
+	  <tr>
+	    <td>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-			</div>
-	   </nav>
-
-
-
-
-
-
-    <div  class="well">
-	<center>
- <form class="form-horizontal" role="form" action="" method="post">
-	  <table cellspacing = "10" cellpadding="0">
-	    <tr>
-	      <td align="center" colspan="2">  <h1 style= "margin-top: 2cm">Registration</h1></td>
-	    </tr>
-
-	       {% csrf_token %}
+	    </td>
+	  </tr>
 
 
+	  <tr>
+	    <td>Password:</td>
+	    <td><input type="password" name="password" value="" class="form-control"></td>
+	    <td style="color:red;">{{user_form.password.errors}}</td>
+	  </tr>
+
+	  <tr>
+	    <td>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	    </td>
+	  </tr>
+
+
+	  <tr>
+	    <td>Confirm password:</td>
+	    <td><input type="password" name="confirm_password" value="" class="form-control"></td>
+	    <td style="color:red;">{{user_form.non_field_errors}}{{user_form.confirm_password.errors}}</td>
+	  </tr>
+
+	  <tr>
+	    <td>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+	    </td>
+	  </tr>
 
 
 
-				    {{ user_form.as_table }}
+	  <tr>
+	    <td colspan="2" align="center"><input type="submit"  name="submit" value="submit" class="btn btn-primary" ></td>
+	  </tr>
+      </table>
+    </form>
 
-
-		</tr>
-
-
-		<tr>
-		    <td>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-		    </td>
-		</tr>
-
-
-	    <tr>
-	      <td align="center" colspan = "2">
-		   <input type="submit"  class="btn btn-success" name ="submit" value="Register">
-	      </td>
-	    </tr>
-	  </table>
-
-      </form>
-	</center>
-    </div>
+      
   </body>
 </html>
