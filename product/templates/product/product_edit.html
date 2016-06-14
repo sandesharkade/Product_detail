@@ -1,5 +1,6 @@
 {% extends 'product/base.html' %}
 {% block body %}
+{% if request.user == form.instance.user %}
 <div class="container-fluid">
 
       <div class="panel panel-default">
@@ -14,7 +15,7 @@
 	    {% include 'product/form_template.html' %}
 	    <div class="form-group">
 	      <div class="col-sm-offset-2 col-sm-10">
-		<button type="submit" class="btn btn-success">Submit</button>
+		<button type="submit" class="btn btn-success">Submit</button>{% csrf_token %}
 	      </div>
 	    </div>
 	  </form>
@@ -22,5 +23,5 @@
 
       </div>
     </div>
-
+{% endif %}
 {% endblock  %}

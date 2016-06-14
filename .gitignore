@@ -71,3 +71,9 @@ target/
 
 # Local settings file
 src/*/settings/local.py
+
+# images
+.img
+.png
+.jpg
+.jpeg

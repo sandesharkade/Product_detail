@@ -1,12 +1,12 @@
 {% extends 'product/base.html' %}
 {% block body %}
-
+{% if request.user == product.user %}
 <div class="container-fluid songs-container">
      <!-- Product Info -->
      <div class="col-sm-4 col-md-3">
        <div class="panel panel-default">
 	 <div class="panel-body">
-	   <a href="{% url 'product:product_detail' product.id %}">
+	   <a href="{% url 'product:product_detail' product.id %}">{% csrf_token %}
 	     {% if product.photo %}
 	     <img src="{{ product.photo.url }}" class="img-responsive">
 	     {% else %}
@@ -22,12 +22,15 @@
 
        <ul class="nav nav-pills" style="margin-bottom: 10px;">
 
-	 <li role="presentation" class="active"><a href="{% url 'product:product_list' %}">View All</a></li>
+	 <li role="presentation" class="active"><a href="{% url 'product:product_list' %}">View All</a></li>{% csrf_token %}
 
-	 <li role="presentation"><a align="rigth" class="btn btn-default" href="{% url 'product:product_edit' product.id %}"  ><span class="glyphicon glyphicon-pencil"></span></a></li>
+	 <li role="presentation"><a align="rigth" class="btn btn-default" href="{% url 'product:product_edit' product.id %}"  ><span class="glyphicon glyphicon-pencil"></span></a></li>{% csrf_token %}
 
        </ul>
      </div>
 </div>
 </div>
+{% else %}
+<h2 style="color:red">You don't have permission to access this information.</h2>
+{% endif %}
 {% endblock  %}
