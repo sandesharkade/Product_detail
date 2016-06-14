@@ -1,14 +1,12 @@
 {% extends 'product/base.html' %}
 {% block body %}
-<div class="container-fluid">
-
+{% if request.user == form.instance.user %}
+<div class="container-fluid centered">
+  <div class="col-sm-6 centered">
       <div class="panel panel-default">
 
-	<div class="panel-body">
-	  <h2 style="align:left;margin-left:12%"><b>Product Change</b></h2><br><br>
-	  {% if error_message %}
-	  <p><strong>{{ error_message }}</strong></p>
-	  {% endif %}
+	<div class="panel-body" >
+	  <h2 style="margin-left:5%"><b>Product Change</b></h2><br><br>
 	  <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 	    {% csrf_token %}
 	    {% include 'product/form_template.html' %}
@@ -19,8 +17,10 @@
 	    </div>
 	  </form>
 	</div>
-
       </div>
     </div>
-
+  </div>
+{% else  %}
+<h2><span class="label label-warning"><strong>Warning! </strong>You don't have permission to view this information</span></h2>
+{% endif %}
 {% endblock  %}

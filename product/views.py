@@ -37,7 +37,7 @@ class Product_edit(UpdateView):
     '''
     template_name = "product/product_edit.html"
     model = Products
-    fields = ['pname', 'photo', 'description']
+    fields = ['name', 'photo', 'description']
     success_url = reverse_lazy("product:product_list")
 
 
@@ -58,7 +58,7 @@ class Product_save(CreateView):
     '''
     model = Products
     template_name = "product/product_save.html"
-    fields = ['pname', 'photo', 'description']
+    fields = ['name', 'photo', 'description']
     success_url = reverse_lazy("product:product_list")
 
     def form_valid(self, form):

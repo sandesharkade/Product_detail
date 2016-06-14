@@ -10,7 +10,7 @@ urlpatterns=[
     url(r'^$',login_required(Product_list.as_view()),name='product_list'),
     url(r'^(?P<pk>\d+)/$',login_required(Product_detail.as_view()),name='product_detail'),
     url(r'^new/$',login_required(Product_save.as_view()),name='product_save'),
-    url(r'^(?P<pk>\d+)/edit/$',login_required(Product_edit.as_view()),name='product_edit'),
+    url(r'^(?P<pk>\d+)/edit/$',(Product_edit.as_view()),name='product_edit'),
     url(r'^logout$',Logout.as_view(),name='logout'),
     url(r'^(?P<pk>\d+)/delete/$',login_required(Product_delete.as_view()),name='product_delete')
 ]

@@ -1,8 +1,9 @@
 {% extends 'product/base.html' %}
 
 {% block body %}
-<div class="albums-container container-fluid">
+<div class="album-container container-fluid">
   <div class="row">
+
   {% if product %}
      {% for products in product %}
     <div class="col-sm-4 col-lg-2">
@@ -11,7 +12,7 @@
 	  <img src="{{ products.photo.url }}" style="width:300px;height:300px" >
 	</a>
 	<div class="caption">
-	  <h2>{{ products.pname }}</h2>
+	  <h2>{{ products.name }}</h2>
 
 
 	  <!-- View Details -->
@@ -30,7 +31,15 @@
     </div>
     {% endfor  %}
 {% else %}
-  <h3>You Don't have any Product</h3>
+    <div class="col-sm-12">
+     <br>
+     <a href="{% url 'product:product_save' %}">
+     <button type="button" class="btn btn-success">
+     <span class="glyphicon glyphicon-plus"></span>&nbsp; Add Product
+    </button>
+   </a>
+</div>
+
   {% endif %}
   </div>
   </div>
