@@ -7,7 +7,7 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
-	<style>
+  <style>
 
 
 
@@ -88,12 +88,25 @@
 
 
 
-	</style>
+  </style>
+  <script language="javascript">
+
+    function msgerror()
+    {
+    var me="{{msg}}";
+    if (me !="")
+    {
+	alert("Wrong username and password");
+
+    }
+
+    }
+  </script>
+
 
   </head>
 
   <body style="background-color:#808080;">
-
 
 
    <div class="row">
@@ -142,7 +155,7 @@
 
 
 
-						<input type="submit" class="btn btn-success btn-md" value="Login" onclick="alert('wrong')" >
+						<input type="submit" class="btn btn-success btn-md" value="Login" onclick="msgerror()" >
 
 
 

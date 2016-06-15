@@ -34,6 +34,11 @@ class Login_view(TemplateView):
     '''
     Login user code
     '''
+    def get(self,request):
+        if request.user.is_active:
+            return HttpResponseRedirect('product')
+        return render(request,'signup/login.html')
+
 
     def post(self, request):
         username = request.POST['username']

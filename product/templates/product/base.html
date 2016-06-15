@@ -1,17 +1,18 @@
-<!DOCTYPE html>
 <html >
-<head>
-    <meta charset="UTF-8">
+  <head>
     <title>Product</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 </head>
 <body>
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
@@ -22,7 +23,7 @@
 	<span class="icon-bar"></span>
 	<span class="icon-bar"></span>
       </button>
-	<a class="navbar-brand" href="{% url 'product:product_list' %}" style="font-size:20pt;">Product</a>
+	<a class="navbar-brand" href="{% url 'product:product_list' %}" style="font-size:20pt; font-family:Pacifico;">ProductBlog</a>
     </div>
 
 
