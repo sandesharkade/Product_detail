@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class SignupForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput, min_length=5)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
     def clean(self):
