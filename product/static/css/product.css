@@ -27,3 +27,13 @@ ul.errorlist > li {
 .glyphicon-star.active {
     color: #FDB230;
 }
+
+a.logout:link{
+    text-decoration:none;
+	color:#FFFFFF;
+}
+
+.dropdown-menu{
+    width:100px;
+    height:70px;
+}

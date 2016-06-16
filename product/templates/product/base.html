@@ -1,18 +1,25 @@
+<!DOCTYPE html>
 <html >
-  <head>
+<head>
+    <meta charset="UTF-8">
     <title>Product</title>
     {% load staticfiles %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{% static 'css/product.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
+
+    <style>
+      ul.dropdown-menu {
+      background-color: #000;
+      }
+    </style>
+
+
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
 
@@ -23,7 +30,7 @@
 	<span class="icon-bar"></span>
 	<span class="icon-bar"></span>
       </button>
-	<a class="navbar-brand" href="{% url 'product:product_list' %}" style="font-size:20pt; font-family:Pacifico;">ProductBlog</a>
+	<a class="navbar-brand" href="{% url 'product:product_list' %}" style="font-size:20pt;">Product</a>
     </div>
 
 
@@ -31,26 +38,25 @@
 <div class="collapse navbar-collapse" id="topNavBar">
 
   <ul class="nav navbar-nav navbar-right">
-    <li>
-      <a>
-	<span  style="color:silver;font-size:14pt;top:-3px;" class="glyphicon glyphicon-user" aria-hidden="false">Welcome,{{user.username}}</span>&nbsp;
-      </a>
-    </li>
      <li>
       <a href="{% url 'product:product_save' %}">
 	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; Add Product
       </a>
     </li>
-
-    <li>
-      <a href="{% url 'product:logout' %}">
-	<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
-      </a>
+    <li class="dropdown" style="right:10px;">
+	 <a href="#" class="glyphicon glyphicon-user dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-hidden="true"><span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu" backgound-color="black">
+       <center><b><li style="color:white;font-size:14px;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;{{request.user}}</li>&nbsp;
+	 <li style="font-size:14px;"><a href="{% url 'product:logout' %}" class="logout" style="color:#FFFFFF" >
+	   <span class="glyphicon glyphicon-off" aria-hidden="false"></span>&nbsp;Logout
+	   </span></a></li>
+       <b></center>
+    </ul>
     </li>
+
   </ul>
 </div>
-
-    </div>
+</div>
 </nav>
 {% block body %}
 {% endblock %}

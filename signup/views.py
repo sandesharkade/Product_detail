@@ -14,6 +14,8 @@ class Register_user(FormView):
 
     def get(self, request):
         user_form = SignupForm
+        if request.user.is_active:
+            return HttpResponseRedirect('product')
         return render(request, 'signup/register.html',
                       {'user_form': user_form})
 
