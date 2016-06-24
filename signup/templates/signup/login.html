@@ -1,174 +1,151 @@
-
 {% load staticfiles %}
 <html>
-  <head>
-    <title>Login</title>
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-   <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
-  <style>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+        <script src="{% static 'js/main.js' %}"></script>
 
+        <style>
+         body
+         {
+             background-image: url({% static "one.jpg" %});
+             -moz-background-size: cover;
+             -webkit-background-size: cover;
+             background-size: cover;
+             background-position: top center !important;
+             background-repeat: no-repeat !important;
+             background-attachment: fixed;
+         }
+        </style>
 
-    <!-- .Login-btn{ -->
-    
-    <!-- float:right; -->
-    <!-- margin-right:20px; -->
+    </head>
 
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <a style="color:black; font-family:'Pacifico', sans-serif; font-size:60pt;">ProductBlog</a>
+                </div>
 
-    <!-- } -->
+                <div class="col-md-9">
+                    <div class="container">
+                        <!-- Trigger the modal with a button -->&nbsp;&nbsp;<br>
+                        &nbsp;&nbsp;<br>
+                        <button type="button" class="btn Login-btn btn-success btn-md" data-toggle="modal" data-target="#myModal">Login</button>
+                        <button type="button" class="btn signup-btn btn-primary btn-md" data-toggle="modal" data-target="#Registration">Signup</button></a>
 
-    <!-- .signup-btn{ -->
+                    <!-- Modal -->
+                        <div class="modal fade" id="Registration" role="dialog">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">×</button>
+                                        <center> <b> <h4 class="modal-title">Registration</h4></b> </center>
+                                    </div>
+                                    <div class="modal-body" style = "background-color:#E0FFFF;">
+                                        <center>
+                                            <div style= "margin-top:1px;">
+                                                <form style="align:center;" id ="register_form" method="POST" action="">{% csrf_token %}
+                                                    <table cellspacing = "5" cellpadding = "5">
 
-    <!-- float:right; -->
-    <!-- margin-right:20px; -->
+                                                        <tr>
+                                                            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Username:</td>
+                                                            <td><input type="text" autofocus="autofocus" id="username" name="username" value="" class="form-control" placeholder="Enter username"></td>
+                                                            <td style="color:red;"></td>
+                                                        </tr>
 
-    <!-- } -->
-    
-	  
-	  body {
-	  background-image: url({% static "city.jpg" %}); 
-	  -moz-background-size: cover;
-	  -webkit-background-size: cover;
-	  background-size: cover;
-	  background-position: top center !important;
-	  background-repeat: no-repeat !important;
-	  background-attachment: fixed;
-    }
+                                                        <tr>
+                                                            <td>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </td>
+                                                        </tr>
 
-    .form-control-inline{
-    min-width:0;
-    width:auto;
-    display:inline;
-    }
+                                                        <tr>
+                                                            <td>Password:</td>
+                                                            <td><input type="password" id="password" name="password" value="" class="form-control" placeholder="Enter Password"></td>
+                                                            <td style="color:red;"></td>
+                                                        </tr>
 
+                                                        <tr>
+                                                            <td>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-    #myModal .modal-dialog
-    {
-    width: 500px;
-    }
+                                                            </td>
+                                                        </tr>
 
-    .bs-example{
-    margin: 20px;
-    }
-    
-    .panel-group{
+                                                        <tr>
+                                                            <td>Confirm password:</td>
+                                                            <td><input type="password" id="confirm_password" name="confirm_password" value="" class="form-control" placeholder="Enter confirm password"></td>
+                                                            <td style="color:red;"></td>
+                                                        </tr>
 
-      margin-top:250px;
-      width:500px;
+                                                        <tr>
+                                                            <td>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </td>
+                                                        </tr>
 
+                                                        <tr>
+                                                            <td colspan="6" align="center"><input type="button" id="register"  name="register" value="register" class="btn btn-success" ></td>
+                                                        </tr>
 
-    
-    }
-    
- </style>
+                                                    </table>
+                                                    <br><br>
+                                                    <p id="error" style="color:red;"></p>
+                                                </form>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <marquee style = "color:red;">*****All the fields are mandatory*****</marquee>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-  </head>
+                        <!-- Login Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
 
- 
-  <body>
-    <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-3">
-	<a style="color:white; font-family:'Pacifico', sans-serif; font-size:60pt;">ProductBlog</a>
-	<a style="color:#FFFAFA; font-family:'Kaushan Script', cursive ; font-size:20pt;">&nbsp;&nbsp;&nbsp;&nbsp;Amazatic!!!!!!!!!</a><br><br>
-	
-	
-      </div>
-      
-     
-
-
-      <div class="col-md-9">
-	<div class="container">
-	<!-- <\!-- Trigger the modal with a button -\->&nbsp;&nbsp;<br> -->
-	<!-- &nbsp;&nbsp;<br> -->
-         
-	<!--  <button type="button"  class="btn Login-btn btn-success btn-md" data-toggle="modal" data-target="#myModal">Login</button>  -->
-	<!-- <a href="{% url 'signup' %}"><button type="button" class="btn signup-btn btn-primary btn-md">Signup</button></a> -->
-       
-	<!-- <\!-- Modal -\-> -->
-	<!-- <div class="modal fade" id="myModal" role="dialog"> -->
-	<!--   <div class="modal-dialog" id="modaldialog"> -->
-
-	<!--     <\!-- Modal content-\-> -->
-	<!--     <div class="modal-content"> -->
-	<!--       <div class="modal-header"> -->
-	<!-- 	<button type="button" class="close" data-dismiss="modal">&times;</button> -->
-	<!-- 	<h3 class="modal-title" style="font-family:'Rock-Salt', cursive;" align="center">Login</h3> -->
-	<!--       </div> -->
-	<!--       <div class="modal-body" id="Bodyid"   style="background-color:#E0FFFF;"> -->
-		<!-- <form id="login_form" method="post" action="" >{% csrf_token %} -->
-                <!--   <center> -->
-		<!--   <br> -->
-		<!--   <label>Username:</label>&nbsp;&nbsp;&nbsp;&nbsp; -->
-
-		<!--   <input type="text" autofocus="autofocus" class="form-control form-control-inline" name="username" placeholder="Enter username"><br><br> -->
-		<!--    <label>Password:</label>&nbsp;&nbsp;&nbsp;&nbsp; -->
-		<!--    <input type="password" class="form-control form-control-inline" name="password" placeholder="Enter password"><br><br> -->
-	        <!--    <input type="submit" class="btn btn-success btn-md" value="Login"></center> -->
-		<!-- </form> -->
-                <!-- <strong style="color:red;">{{msg}}</strong> -->
-
-		 
-	<!-- 	<\!-- <script type="text/javascript"> -\-> -->
-        <!--         <\!--    alert("{{msg}}"); -\-> -->
-        <!--         <\!--  </script> -\-> -->
-
-
-
-	<!--       </div> -->
-	<!--       <div class= "modal-footer"> -->
-	<!-- 	<marquee style="color:red;">****All the fields are Mandatory.****</marquee> -->
-		
-	<!--     </div> -->
-	<!--   </div> -->
-	<!--   </div> -->
-
-
-        <div class="bs-example">
-	  <div class="panel-group" id="accordion">
-
-
-            <div class="panel panel-default">
-	      <div class="panel-heading">
-		<h4 class="panel-title">
-		  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Login</a>
-		</h4>
-	      </div>
-	      <div id="collapseOne" class="panel-collapse collapse in">
-		<div class="panel-body">
-
-		   <form id="login_form" method="post" action="" >{% csrf_token %}
-                  <center>
-		  <br>
-		  <label>Username:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-
-		  <input type="text" autofocus="autofocus" class="form-control form-control-inline" name="username" placeholder="Enter username"><br><br>
-		   <label>Password:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-		   <input type="password" class="form-control form-control-inline" name="password" placeholder="Enter password"><br><br></center>
-	          <center><input type="submit" class="btn btn-success btn-md" value="Login">&nbsp;&nbsp;&nbsp;&nbsp;
-		    <a href="{% url 'signup' %}"><button type="button" class="btn signup-btn btn-primary btn-md">Signup</button></a></center>
-		</form>
-               <center> <strong style="color:red;">{{msg}}</strong> </center>
-
-                  </div>
-	      </div>
-	    </div>
-	    
-	    
-	   
-
-
-
-	 </div>
-	</div>
-      </div>
-
-</div>
-      
-  </body>
-  </html>
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h3 class="modal-title" style="font-family:'Rock-Salt', cursive;" align="center">Login</h3>
+                                    </div>
+                                    <div class="modal-body" style="background-color:#E0FFFF;">
+                                        <form id="login_form" method="post" action="" >{% csrf_token %}
+                                            <center>
+                                                <br>
+                                                <label>Username:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="text" id="u_name" autofocus="autofocus" class="form-control form-control-inline" name="u_name" placeholder="Enter username"><br><br>
+                                                <label>Password:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <input type="password" id="login_password" class="form-control form-control-inline" name="login_password" placeholder="Enter password"><br><br>
+                                                <input type="button" id="login" class="btn btn-success btn-md" value="Login" ><br><br>
+                                                <p id="error_login" style="color:red;"></p>
+                                            </center>
+                                        </form>
+                                    </div>
+                                    <div class= "modal-footer">
+                                        <marquee style="color:red;">****All the fields are Mandatory.****</marquee>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+</html>

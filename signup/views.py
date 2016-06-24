@@ -1,9 +1,13 @@
 from django.shortcuts import render
-from .forms import SignupForm
 from django.contrib.auth import authenticate, login
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView, FormView
+from .forms import SignupForm
+
+
+class HomePageView(TemplateView):
+    template_name = "signup/product.html"
 
 
 class Register_user(FormView):
@@ -12,23 +16,16 @@ class Register_user(FormView):
     To add a user
     '''
 
-    def get(self, request):
-        user_form = SignupForm
-        if request.user.is_active:
-            return HttpResponseRedirect('product')
-        return render(request, 'signup/register.html',
-                      {'user_form': user_form})
-
     def post(self, request):
+
         form = SignupForm(data=request.POST)
         if form.is_valid():
             user = form.save()
             user.set_password(user.password)
             user.save()
-            return HttpResponseRedirect('/')
-
+            return HttpResponse(status=200)
         else:
-            return render(request, 'signup/register.html', {'user_form': form})
+            return HttpResponse(status=400)
 
 
 class Login_view(TemplateView):
@@ -36,19 +33,18 @@ class Login_view(TemplateView):
     '''
     Login user code
     '''
-    def get(self,request):
+
+    def get(self, request):
         if request.user.is_active:
             return HttpResponseRedirect('product')
-        return render(request,'signup/login.html')
-
+        return render(request, 'signup/login.html', {})
 
     def post(self, request):
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(username=username, password=password)
+        u_name = request.POST['u_name']
+        password = request.POST['login_password']
+        user = authenticate(username=u_name, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect('product')
+            return HttpResponse(status=200)
         else:
-            msg = "Wrong Username OR Wrong Password"
-            return render(request, 'signup/login.html', {'msg': msg})
+            return HttpResponse(status=400)

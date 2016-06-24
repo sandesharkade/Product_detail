@@ -1,0 +1,27 @@
+.Login-btn
+{
+
+  float:right;
+  margin-right:20px;
+
+}
+
+.signup-btn
+{
+  float:right;
+             margin-right:20px;
+}
+
+
+.form-control-inline
+{
+  min-width:0;
+  width:auto;
+  display:inline;
+}
+
+
+#myModal .modal-dialog
+{
+  width: 500px;
+}

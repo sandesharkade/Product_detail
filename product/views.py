@@ -1,11 +1,12 @@
 from .models import Products
 from django.contrib.auth.models import User
 from django.views.generic import (ListView, DetailView,
-                                  UpdateView,DeleteView,CreateView,View)
+                                  UpdateView, DeleteView, CreateView, View)
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.contrib.auth import logout
 from mysite import settings
+from django.db.models import Q
 
 
 class Product_list(ListView):
@@ -17,7 +18,11 @@ class Product_list(ListView):
     context_object_name = "product"
 
     def get_queryset(self):
-        return Products.objects.filter(user=self.request.user)
+        query = self.request.GET.get('search_product')
+        if query:
+            return Products.objects.filter(Q(user=self.request.user) & Q(name__icontains=query))
+        else:
+            return Products.objects.filter(user=self.request.user)
 
 
 class Product_detail(DetailView):
@@ -44,18 +49,19 @@ class Product_edit(UpdateView):
 class Product_delete(DeleteView):
 
     '''
-     product delete
+    product delete
     '''
 
-    model=Products
-    success_url=reverse_lazy("product:product_list")
+    model = Products
+    success_url = reverse_lazy("product:product_list")
 
 
 class Product_save(CreateView):
 
     '''
-     product save
+    product save
     '''
+
     model = Products
     template_name = "product/product_save.html"
     fields = ['name', 'photo', 'description']

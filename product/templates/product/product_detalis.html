@@ -2,35 +2,35 @@
 {% block body %}
 {% if request.user == product.user  %}
 <div class="container-fluid ">
-     <!-- Product Info -->
-     <div class="col-sm-4 col-md-3">
-       <div class="panel panel-default">
-	 <div class="panel-body">
-	   <a href="{% url 'product:product_detail' product.id %}">
-	     {% if product.photo %}
-	     <img src="{{ product.photo.url }}" class="img-responsive">
-	     {% else %}
-	     <h3>No image to display</h3>
-	     {% endif %}
-	   </a>
-	   <h1>{{ product.name }} </h1>
-	   <h2><p>{{ product.description|linebreaks}}</p></h2>
-	 </div>
-       </div>
+    <!-- Product Info -->
+    <div class="col-sm-4 col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <a href="{% url 'product:product_detail' product.id %}">
+                    {% if product.photo %}
+                        <img src="{{ product.photo.url }}" class="img-responsive">
+                    {% else %}
+                        <h3>No image to display</h3>
+                    {% endif %}
+                </a>
+                <h1>{{ product.name }} </h1>
+                <h2><p>{{ product.description|linebreaks}}</p></h2>
+            </div>
+        </div>
      </div>
      <div class="col-sm-8 col-md-9">
-
-       <ul class="nav nav-pills" style="margin-bottom: 20px;">
-
-	 <li role="presentation" class="active"><a href="{% url 'product:product_list' %}">View All</a></li>
-
-	 <li role="presentation" style="left:10px"><a align="right" class="btn btn-default" href="{% url 'product:product_edit' product.id %}"  ><span class="glyphicon glyphicon-pencil"></span></a></li>
-
-       </ul>
+         <ul class="nav nav-pills" style="margin-bottom: 20px;">
+             <li role="presentation" class="active"><a href="{% url 'product:product_list' %}">View All</a></li>
+             <li role="presentation" style="left:10px"><a align="right" class="btn btn-default" href="{% url 'product:product_edit' product.id %}"  ><span class="glyphicon glyphicon-pencil"></span></a></li>
+         </ul>
      </div>
-   </div>
+</div>
 </div>
 {% else  %}
-<h2><span class="label label-warning"><strong>Warning! </strong>You don't have permission to view this information</span></h2>
+<h2>
+    <span class="label label-warning">
+        <strong>Warning! </strong>You don't have permission to view this information
+    </span>
+</h2>
 {% endif %}
 {% endblock  %}

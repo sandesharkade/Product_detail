@@ -1,46 +1,42 @@
 {% extends 'product/base.html' %}
-
 {% block body %}
 <div class="container-fluid">
-  <div class="row">
+    <div class="row">
+        {% if product %}
+        {% for products in product %}
+        <div class="col-sm-4 col-lg-2">
+            <div class="thumbnail" >
+                <a href="{% url 'product:product_detail' products.id %}">
+                    <img src="{{ products.photo.url }}" style="width:300px;height:300px" >
+                </a>
+                <div class="caption">
+                    <h2>{{ products.name }}</h2>
 
-  {% if product %}
-     {% for products in product %}
-    <div class="col-sm-4 col-lg-2">
-      <div class="thumbnail" >
-	<a href="{% url 'product:product_detail' products.id %}">
-	  <img src="{{ products.photo.url }}" style="width:300px;height:300px" >
-	</a>
-	<div class="caption">
-	  <h2>{{ products.name }}</h2>
+                    <!-- View Details -->
+                    <a href="{% url 'product:product_detail' products.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
 
-
-	  <!-- View Details -->
-	  <a href="{% url 'product:product_detail' products.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
-
-	  <!-- Delete Album -->
-	  <form action="{% url 'product:product_delete' products.id %}" method="post" style="display: inline;">
-	    {% csrf_token %}
-	    <input type="hidden" name="album_id" value="{{ products.id }}" />
-	    <button type="submit" class="btn btn-default btn-sm">
-	      <span class="glyphicon glyphicon-trash"></span>
-	    </button>
-	  </form>
-	</div>
-      </div>
+                    <!-- Delete Album -->
+                    <form action="{% url 'product:product_delete' products.id %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <input type="hidden" name="album_id" value="{{ products.id }}" />
+                        <button type="submit" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor  %}
+        {% else %}
+        <div class="col-sm-12">
+            <br>
+            <a href="{% url 'product:product_save' %}">
+                <button type="button" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp; Add Product
+                </button>
+            </a>
+        </div>
+        {% endif %}
     </div>
-    {% endfor  %}
-{% else %}
-    <div class="col-sm-12">
-     <br>
-     <a href="{% url 'product:product_save' %}">
-     <button type="button" class="btn btn-success">
-     <span class="glyphicon glyphicon-plus"></span>&nbsp; Add Product
-    </button>
-   </a>
 </div>
-
-  {% endif %}
-  </div>
-  </div>
 {% endblock  %}
