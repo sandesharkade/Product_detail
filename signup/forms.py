@@ -1,10 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
+#from main.validators import validate_email_unique
 
 
 class SignupForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput, min_length=5)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
+   # email = forms.CharField(required=True, validators=[validate_email_unique])
 
     def clean(self):
         '''
@@ -20,4 +22,4 @@ class SignupForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'password', 'confirm_password')
+        fields = ('username', 'password', 'confirm_password', 'email')

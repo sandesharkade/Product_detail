@@ -1,4 +1,4 @@
-#!/home/amazatic/myproject/env/bin/python2
+#!/home/amazatic/Product_detail/env/bin/python3
 #
 # The Python Imaging Library.
 # $Id$

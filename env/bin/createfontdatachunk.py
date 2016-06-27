@@ -1,4 +1,4 @@
-#!/home/amazatic/myproject/env/bin/python2
+#!/home/amazatic/Product_detail/env/bin/python3
 from __future__ import print_function
 import base64
 import os

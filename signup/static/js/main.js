@@ -1,14 +1,14 @@
 $(document).ready(function(){
   // register ajax
   $("#register").click(function(){
-    // Checking for blank fields.
+    // COAhecking for blank fields.
     if( $("#username").val() == '' || $("#password").val()==''){
-      $('input[id="username"],input[id="password"],input[id="confirm_password"]').css("border","2px solid red");
+      $('input[id="username"],input[id="password"],input[id="confirm_password"],input[id="email"]').css("border","2px solid red");
       $("#error").html("Please fill all the fields!");
     } else if($("#password").val().length < 5){
-      $("#error").html("Password length should be more than 4");
+      $("#error").html("Password length should be more than 4 characters");
     } else if( $("#confirm_password").val()!=$("#password").val()){
-      $("#error").html("Passwords don't match. Try again!");
+      $("#error").html("Passwords don't match.");
     } else {
       $.ajax({
         type: "POST",
@@ -19,7 +19,19 @@ $(document).ready(function(){
           window.location = '';
         },
         error: function(data){
-          $("#error").html("Username already exists!");
+
+         if(data.responseText=="usernameemail")
+          {
+            $("#error").html("Username already exists and Invalid email address.");
+          }
+          else if(data.responseText=="email")
+          {
+            $("#error").html("Invalid email address.");
+          }
+          else
+          {
+            $("#error").html("Username already exists.");
+          }
         }
       });
     }

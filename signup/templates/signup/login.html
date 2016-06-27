@@ -14,7 +14,8 @@
         <style>
          body
          {
-             background-image: url({% static "one.jpg" %});
+
+             background-image: url({% static "order.jpg" %});
              -moz-background-size: cover;
              -webkit-background-size: cover;
              background-size: cover;
@@ -38,6 +39,8 @@
                         &nbsp;&nbsp;<br>
                         <button type="button" class="btn Login-btn btn-success btn-md" data-toggle="modal" data-target="#myModal">Login</button>
                         <button type="button" class="btn signup-btn btn-primary btn-md" data-toggle="modal" data-target="#Registration">Signup</button></a>
+
+
                     <!-- Modal -->
                         <div class="modal fade" id="Registration" role="dialog">
                             <div class="modal-dialog modal-md">
@@ -47,9 +50,13 @@
                                         <center> <b> <h4 class="modal-title">Registration</h4></b> </center>
                                     </div>
                                     <div class="modal-body" style = "background-color:#E0FFFF;">
+
+
                                         <center>
+
                                             <div style= "margin-top:1px;">
                                                 <form style="align:center;" id ="register_form" method="POST" action="">{% csrf_token %}
+
                                                     <table cellspacing = "5" cellpadding = "5">
 
                                                         <tr>
@@ -68,6 +75,20 @@
                                                             </td>
                                                         </tr>
 
+
+                                                        <td>Email:</td>
+                                                            <td><input type="text" id="email" name="email" value="" class="form-control" placeholder="Enter email address"></td>
+                                                            <td style="color:red;"></td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            </td>
+                                                        </tr>
+
+
                                                         <tr>
                                                             <td>Password:</td>
                                                             <td><input type="password" id="password" name="password" value="" class="form-control" placeholder="Enter Password"></td>
@@ -81,6 +102,8 @@
 
                                                             </td>
                                                         </tr>
+
+
                                                         <tr>
                                                             <td>Confirm password:</td>
                                                             <td><input type="password" id="confirm_password" name="confirm_password" value="" class="form-control" placeholder="Enter confirm password"></td>
@@ -104,6 +127,7 @@
                                                 </form>
                                             </div>
                                         </center>
+
                                     </div>
                                     <div class="modal-footer">
                                         <marquee style = "color:red;">*****All the fields are mandatory*****</marquee>
@@ -111,6 +135,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                         <!-- Login Modal -->
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog">
@@ -136,6 +162,7 @@
                                     </div>
                                     <div class= "modal-footer">
                                         <marquee style="color:red;">****All the fields are Mandatory.****</marquee>
+
                                     </div>
                                 </div>
                             </div>

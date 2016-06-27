@@ -1,4 +1,4 @@
-#!/home/amazatic/myproject/env/bin/python2
+#!/home/amazatic/Product_detail/env/bin/python3
 """PILdriver, an image-processing calculator using PIL.
 
 An instance of class PILDriver is essentially a software stack machine

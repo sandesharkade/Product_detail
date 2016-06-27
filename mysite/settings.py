@@ -26,8 +26,8 @@ SECRET_KEY = '2a699jjkeuczp*z6o80xsa)cmd^s-#!fe#lvfet25*age+8=)k'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-LOGIN_URL='/login/'
-LOGIN_REDIRECT_URL='/login/'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/login/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,9 +43,9 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
-                'rest_framework.permissions.IsAuthenticated',
-            )
-    }
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,21 +122,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-#STATIC_URL = '/static/'
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-#MEDIA_ROOT='/home/amazatic/mycar/media/'
-#MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
-#MEDIA_URL='/media/'
-
-
-
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'image/static/media/img')
 MEDIA_URL = '/media/img/'
 STATIC_URL = '/static/'
-LOGIN_URL='/'
+LOGIN_URL = '/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_USE_TLS = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+
+EMAIL_HOST_USER = 'rohansul7@gmail.com'
+
+# Must generate specific password for your app in [gmail settings][1]
+EMAIL_HOST_PASSWORD = '7878137906'
+EMAIL_PORT = 587
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
