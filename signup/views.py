@@ -1,11 +1,10 @@
 from django.shortcuts import render
 from .forms import SignupForm
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login                     
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.views.generic import TemplateView, FormView
 from django.core.mail import EmailMessage
-
 
 class Register_user(FormView):
 
@@ -18,13 +17,12 @@ class Register_user(FormView):
         if form.is_valid():
             user = form.save()
             user.set_password(user.password)
-            email = EmailMessage('Registration of product bolg site',
+            email = EmailMessage('Registration for product blog site',
                                  'rohan9.pythonanywhere.com', to=[request.POST['email']])
             email.send()
             user.save()
             return HttpResponse(status=200)
         else:
-            print(form.errors)
             return HttpResponse(form.errors, status=400)
 
 
@@ -48,3 +46,4 @@ class Login_view(TemplateView):
             return HttpResponse(status=200)
         else:
             return HttpResponse(status=400)
+            
