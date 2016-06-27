@@ -1,4 +1,4 @@
-	# Byte-compiled / optimized / DLL files
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -8,7 +8,8 @@ __pycache__/
 *~
 #*
 .#*
-
+*.pyc
+	
 # C extensions
 *.so
 
@@ -77,4 +78,4 @@ src/*/settings/local.py
 .png
 .jpg
 .jpeg
-Status 
+Status 	
